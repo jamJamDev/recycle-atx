@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data: this.state.data,
+      data: null,
       recycleTypes: [
         {'id':'oil', 'title': 'oil'},
         {'id':'oil_filter', 'title': 'oil filter'},
@@ -53,9 +53,14 @@ class App extends Component {
 
   render() {
     //const listItems = [<li>test</li>, <li>test</li>, <li>test</li>];
-    const listItems = this.state.data.map((item) =>
+    let listItems;
+    if(this.state.data){
+      listItems = this.state.data.map((item) =>
             <li>{item.address.human_address}</li>
         );
+    } else {
+      listItems = null
+    }
     return <div className="App">
       <div className="App-header">
         {<img src={logo} className="App-logo" alt="logo"/>}
@@ -71,6 +76,7 @@ class App extends Component {
               }
           )};
         </select>
+
         <ul>
           {listItems}
         </ul>
