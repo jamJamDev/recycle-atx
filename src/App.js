@@ -1,3 +1,4 @@
+// TODO: CLEAN-UP
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -11,6 +12,7 @@ class App extends Component {
     this.state = {
       data: null,
       default_data: null,
+      // TODO: ADD ICONS :D display on results if it has it :)
       recycleTypes: [
         {'id':'oil', 'title': 'oil'},
         {'id':'oil_filter', 'title': 'oil filter'},
@@ -26,6 +28,10 @@ class App extends Component {
 
   getRecycleTypes(){
     axios.get('https://data.austintexas.gov/resource/qzi7-nx8g.json').then((res) => {
+      let new_data = res.data.map( item => {
+        item.human_address = JSON.parse(item.address.human_address);
+        return item;
+      });
       this.setState({
         data: res.data,
         default_data: res.data
@@ -57,26 +63,32 @@ class App extends Component {
     let listItems;
     if(this.state.data){
       listItems = this.state.data.map((item) =>
-            <li><b>{item.business_name}:</b> {item.address.human_address}</li>
+            <li>
+                <h3>{item.business_name}</h3>
+                <ul className="info-list">
+                    <li className="address">{item.human_address.address}</li>
+                    <li className="city-zip">{item.human_address.city}, {item.human_address.state} - {item.human_address.zip}</li>
+                </ul>
+            </li>
         );
     } else {
       listItems = null
     }
     return <div className="App">
       <div className="App-header">
-        <div class="row">
-          <div class="col-sm-12">
+        <div className="row">
+          <div className="col-sm-12">
             <h2>Recycle ATX</h2>
           </div>
-          <div class="col-sm-12">
+          <div className="col-sm-12">
             <FontAwesomeIcon icon={faRecycle} class="recycle" />
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
+        <div className="row">
+          <div className="col-sm-12">
             <label for="typeSelect">Select what you need to recycle:</label>
           </div>   
-          <div class="col-sml-12 select-wrapper">
+          <div className="col-sml-12 select-wrapper">
             <select id="typeSelect" onChange={e => this.handleTypeChange(e.target.value)} value={this.state.value}>
               <option value='all'>All</option>
               {this.state.recycleTypes.map(function (type, i) {
