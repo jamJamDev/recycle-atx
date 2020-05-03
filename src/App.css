@@ -7,6 +7,7 @@
 }
 
 .App-header {
+  padding-top: 1em;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -21,6 +22,39 @@
   color: #09d3ac;
 }
 
-.recyle {
-  font-size: 2em;
+svg.recycle {
+  max-width: 5em;
+  font-size: 1em;
+  color: #009933;
+  margin: .5em auto;
+}
+
+.App-header label {
+  font-size: 22px;
+  padding-right: 1em;
+}
+
+.select-wrapper {
+  display: contents;
+}
+
+.select-wrapper select {
+  margin: .5em auto;
+}
+
+.result-list {
+  list-style:   none;
+}
+
+.result-list li {
+  border: 1px solid #FFFFFF;
+  margin: 1em auto;
+  padding: 1em;
+}
+
+/** Mobile **/
+@media only screen and (max-width: 600px) {
+  .result-list li {
+    padding: .5em .25em;
+  }
 }

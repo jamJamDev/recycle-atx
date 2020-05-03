@@ -49,6 +49,7 @@ class App extends Component {
       data: new_data
     }, () => {
       // TODO do I want to do anything after updating?
+      // TODO - add a spinner, hide spinner here :thumbsup:
     });
   }
 
@@ -72,8 +73,10 @@ class App extends Component {
           </div>
         </div>
         <div class="row">
-          <div class="col-sml-12">
+          <div class="col-sm-12">
             <label for="typeSelect">Select what you need to recycle:</label>
+          </div>   
+          <div class="col-sml-12 select-wrapper">
             <select id="typeSelect" onChange={e => this.handleTypeChange(e.target.value)} value={this.state.value}>
               <option value='all'>All</option>
               {this.state.recycleTypes.map(function (type, i) {
@@ -87,7 +90,7 @@ class App extends Component {
             </select>
           </div>
         </div>
-        <ul>
+        <ul className="result-list">
           {listItems}
         </ul>
       </div>
