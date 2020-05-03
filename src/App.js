@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       data: null,
+      default_data: null,
       recycleTypes: [
         {'id':'oil', 'title': 'oil'},
         {'id':'oil_filter', 'title': 'oil filter'},
@@ -19,19 +20,18 @@ class App extends Component {
         {'id':'newspapers', 'title': 'newspapers'},
         {'id':'scrap_metal', 'title': 'scrap metal'},
         {'id':'aluminum', 'title': 'aluminum'}],
-      filteredGradeData: '',
+      selectedType: null,
     };
   }
 
   getRecycleTypes(){
     axios.get('https://data.austintexas.gov/resource/qzi7-nx8g.json').then((res) => {
-      console.log(res);
       this.setState({
-        data: res.data
+        data: res.data,
+        default_data: res.data
       });
-      console.log("STATE:", this.state);
     }).catch(error => {
-      console.log(error.response);
+      console.error("Error getting response from API: ", error.response);
     });
   }
 
@@ -39,20 +39,20 @@ class App extends Component {
     this.getRecycleTypes();
   }
 
-  handleTypeChange(e){
-    axios.get('https://data.austintexas.gov/resource/qzi7-nx8g.json').then((res) => {
-      console.log("RESPONSE", res);
-      this.setState({
-        data: res.data
-      });
-    //  TODO: loop through ids - if hasAttribute 'blah' & === 'Yes' return to results
-    }).catch(error => {
-      console.log(error.response);
+  handleTypeChange(e) {
+    // TODO: Future Improvement - update to use checkbox to search for multiple types at once
+    let new_data;
+    new_data = this.state.default_data.slice();
+    new_data = new_data.filter(data_item => data_item[e] === 'Yes');
+    // TODO: State not updating for some reason
+    this.setState({
+      data: new_data
+    }, () => {
+      // TODO do I want to do anything after updating?
     });
   }
 
   render() {
-    //const listItems = [<li>test</li>, <li>test</li>, <li>test</li>];
     let listItems;
     if(this.state.data){
       listItems = this.state.data.map((item) =>
@@ -74,7 +74,7 @@ class App extends Component {
         <div class="row">
           <div class="col-sml-12">
             <label for="typeSelect">Select what you need to recycle:</label>
-            <select id="typeSelect" onChange={this.handleTypeChange} value={this.state.value}>
+            <select id="typeSelect" onChange={e => this.handleTypeChange(e.target.value)} value={this.state.value}>
               <option value='all'>All</option>
               {this.state.recycleTypes.map(function (type, i) {
                     return <option
