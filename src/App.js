@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './recycle_logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import { faRecycle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 
 class App extends Component {
@@ -56,27 +56,37 @@ class App extends Component {
     let listItems;
     if(this.state.data){
       listItems = this.state.data.map((item) =>
-            <li>{item.address.human_address}</li>
+            <li><b>{item.business_name}:</b> {item.address.human_address}</li>
         );
     } else {
       listItems = null
     }
     return <div className="App">
       <div className="App-header">
-        {<img src={logo} className="App-logo" alt="logo"/>}
-        <h2>Recycle Types</h2>
-        <select onChange={this.handleTypeChange} value={this.state.value}>
-          <option value='all'>All</option>
-          {this.state.recycleTypes.map(function (type, i) {
-                return <option
-                    key={type.id}
-                    value={type.id}>
-                  {type.title}
-                </option>
-              }
-          )};
-        </select>
-
+        <div class="row">
+          <div class="col-sm-12">
+            <h2>Recycle ATX</h2>
+          </div>
+          <div class="col-sm-12">
+            <FontAwesomeIcon icon={faRecycle} class="recycle" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sml-12">
+            <label for="typeSelect">Select what you need to recycle:</label>
+            <select id="typeSelect" onChange={this.handleTypeChange} value={this.state.value}>
+              <option value='all'>All</option>
+              {this.state.recycleTypes.map(function (type, i) {
+                    return <option
+                        key={type.id}
+                        value={type.id}>
+                      {type.title}
+                    </option>
+                  }
+              )};
+            </select>
+          </div>
+        </div>
         <ul>
           {listItems}
         </ul>
