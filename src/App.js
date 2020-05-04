@@ -5,6 +5,7 @@ import './App.css';
 import { faRecycle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
+import AppHeader from './AppHeader';
 
 class App extends Component {
   constructor(props){
@@ -80,14 +81,7 @@ class App extends Component {
     }
     return <div className="App">
       <div className="App-header">
-        <div className="row">
-          <div className="col-sm-12">
-            <h2>Recycle ATX</h2>
-          </div>
-          <div className="col-sm-12">
-            <FontAwesomeIcon icon={faRecycle} class="recycle" />
-          </div>
-        </div>
+        <AppHeader />
         <div className="row">
           <div className="col-sm-12">
             <label for="typeSelect">Select what you need to recycle:</label>
