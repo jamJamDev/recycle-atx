@@ -48,8 +48,12 @@ class App extends Component {
   handleTypeChange(e) {
     // TODO: Future Improvement - update to use checkbox to search for multiple types at once
     let new_data;
-    new_data = this.state.default_data.slice();
-    new_data = new_data.filter(data_item => data_item[e] === 'Yes');
+    if(e === 'all') {
+      new_data = this.state.default_data
+    } else {
+      new_data = this.state.default_data.slice();
+      new_data = new_data.filter(data_item => data_item[e] === 'Yes');
+    }
     // TODO: State not updating for some reason
     this.setState({
       data: new_data
