@@ -6,6 +6,7 @@ import { faRecycle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import AppHeader from './AppHeader';
+import Options from './Options';
 
 class App extends Component {
   constructor(props){
@@ -100,6 +101,9 @@ class App extends Component {
             </select>
           </div>
         </div>
+
+        <Options />
+
         <ul className="result-list">
           {listItems}
         </ul>
