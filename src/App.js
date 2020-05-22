@@ -5,8 +5,9 @@ import './App.css';
 import { faRecycle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
-import AppHeader from './AppHeader';
-import Options from './Options';
+import AppHeader from './components/AppHeader';
+import Options from './components/Options';
+import optionsData from './optionsData';
 
 class App extends Component {
   constructor(props){
@@ -15,15 +16,7 @@ class App extends Component {
       data: null,
       default_data: null,
       // TODO: ADD ICONS :D display on results if it has it :)
-      recycleTypes: [
-        {'id':'oil', 'title': 'oil'},
-        {'id':'oil_filter', 'title': 'oil filter'},
-        {'id':'fluids', 'title': 'fluids'},
-        {'id':'tires', 'title': 'tires'},
-        {'id':'batteries', 'title': 'batteries'},
-        {'id':'newspapers', 'title': 'newspapers'},
-        {'id':'scrap_metal', 'title': 'scrap metal'},
-        {'id':'aluminum', 'title': 'aluminum'}],
+      recycleTypes: optionsData,
       selectedType: null,
     };
   }
@@ -102,7 +95,7 @@ class App extends Component {
           </div>
         </div>
 
-        <Options />
+        <Options options={this.state.recycleTypes}/>
 
         <ul className="result-list">
           {listItems}

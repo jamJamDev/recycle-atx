@@ -42,6 +42,18 @@ svg.recycle {
   margin: .5em auto;
 }
 
+ul.filter-options {
+    list-style: none;
+    column-count: 3;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+ul.filter-options li label input {
+    margin-right: 8px;
+}
+
 .result-list {
   list-style: none;
   padding: 0 1em;
@@ -65,8 +77,20 @@ svg.recycle {
   padding: 0;
 }
 
+/** Tablet **/
+@media only screen and (max-width: 1024px) {
+    ul.filter-options {
+        column-count: 2;
+    }
+}
+
 /** Mobile **/
 @media only screen and (max-width: 600px) {
+    ul.filter-options {
+        column-count: 1;
+        margin-top: 1em;
+    }
+
   .result-list li {
     padding: .5em .25em;
   }
