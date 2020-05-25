@@ -1,23 +1,28 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import CheckboxGroup from 'react-checkbox-group';
-import optionsData from './../optionsData';
 
 class Options extends Component {
     handleOptionsChange(e){
-        console.log(e);
-        console.log(e.currentTarget);
-        //TODO need to handle updating checkbox group's values
-        // https://medium.com/@wlodarczyk_j/handling-multiple-checkboxes-in-react-js-337863fd284e
+        // Add or remove value to or from the selectedTypes array
+        if(e.target.checked){
+            this.props.selectedTypes.push(e.target.value)
+        } else {
+            for (var i = 0; i < this.props.selectedTypes.length; i++){
+                if (this.props.selectedTypes[i] == e.target.value){
+                    this.props.selectedTypes.splice(i,i);
+                }
+            }
+        }
     }
 
     render() {
         return (
             <ul className="filter-options">
-                <CheckboxGroup name="options-list" value={optionsData} onChange={this.handleOptionsChange}>
+                <CheckboxGroup name="options-list" value={this.props.options} onChange={this.handleOptionsChange}>
                   {(Checkbox) => (
                     <>
-                        {optionsData.map((option, index) => (
+                        {this.props.options.map((option, index) => (
                             <li>
                                 <label>
                                   <input onChange={e => this.handleOptionsChange(e)} type="checkbox"

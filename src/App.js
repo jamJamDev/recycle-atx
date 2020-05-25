@@ -17,7 +17,7 @@ class App extends Component {
       default_data: null,
       // TODO: ADD ICONS :D display on results if it has it :)
       recycleTypes: optionsData,
-      selectedType: null,
+      selectedTypes: [],
     };
   }
 
@@ -95,7 +95,7 @@ class App extends Component {
           </div>
         </div>
 
-        <Options options={this.state.recycleTypes}/>
+        <Options options={this.state.recycleTypes} selectedTypes={this.state.selectedTypes}/>
 
         <ul className="result-list">
           {listItems}
