@@ -4,16 +4,40 @@ import CheckboxGroup from 'react-checkbox-group';
 
 class Options extends Component {
     handleOptionsChange(e){
+        let selected_value = e.target.value
+
         // Add or remove value to or from the selectedTypes array
         if(e.target.checked){
-            this.props.selectedTypes.push(e.target.value)
+            this.props.selectedTypes.push(selected_value);
+
+            let new_data = this.props.defaultData.filter(data_item => data_item[selected_value] == 'Yes')
+            this.props.data.push(new_data)
+            this.props.handleTypeChange(new_data);
         } else {
+            // TODO update removal of unchecked option & this.props.handleTypeChange(new_data);
             for (var i = 0; i < this.props.selectedTypes.length; i++){
-                if (this.props.selectedTypes[i] == e.target.value){
+                if (this.props.selectedTypes[i] == selected_value){
                     this.props.selectedTypes.splice(i,i);
                 }
             }
         }
+
+//    let new_data;
+//    if(e.target.value === 'all') {
+//      new_data = this.props.default_data
+//    } else {
+//      new_data = this.props.default_data;
+//      new_data = new_data.filter(data_item => data_item[e] === 'Yes');
+//    }
+//    // TODO: State not updating for some reason
+//    this.setState({
+//      data: new_data
+//    }, () => {
+//      // TODO do I want to do anything after updating?
+//      // TODO - add a spinner, hide spinner here :thumbsup:
+//    });
+
+
     }
 
     render() {

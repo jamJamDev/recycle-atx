@@ -40,22 +40,23 @@ class App extends Component {
     this.getRecycleTypes();
   }
 
-  handleTypeChange(e) {
+  handleTypeChange(passed_data) {
     // TODO: Future Improvement - update to use checkbox to search for multiple types at once
-    let new_data;
-    if(e === 'all') {
-      new_data = this.state.default_data
-    } else {
-      new_data = this.state.default_data.slice();
-      new_data = new_data.filter(data_item => data_item[e] === 'Yes');
-    }
-    // TODO: State not updating for some reason
-    this.setState({
-      data: new_data
-    }, () => {
-      // TODO do I want to do anything after updating?
-      // TODO - add a spinner, hide spinner here :thumbsup:
-    });
+    this.setState({data: passed_data})
+    //let new_data;
+//    if(e === 'all') {
+//      new_data = this.state.default_data
+//    } else {
+//      new_data = this.state.default_data.slice();
+//      new_data = new_data.filter(data_item => data_item[e] === 'Yes');
+//    }
+//    // TODO: State not updating for some reason
+//    this.setState({
+//      data: new_data
+//    }, () => {
+//      // TODO do I want to do anything after updating?
+//      // TODO - add a spinner, hide spinner here :thumbsup:
+//    });
   }
 
   render() {
@@ -95,7 +96,7 @@ class App extends Component {
           </div>
         </div>
 
-        <Options options={this.state.recycleTypes} selectedTypes={this.state.selectedTypes}/>
+        <Options options={this.state.recycleTypes} selectedTypes={this.state.selectedTypes} defaultData={this.state.default_data} data={this.state.data} handleTypeChange={this.handleTypeChange.bind(this)}/>
 
         <ul className="result-list">
           {listItems}
