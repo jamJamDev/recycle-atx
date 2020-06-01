@@ -8,18 +8,23 @@ class Options extends Component {
 
         // Add or remove value to or from the selectedTypes array
         if(e.target.checked){
+            // update the selected types
             this.props.selectedTypes.push(selected_value);
+            let selected_types = this.props.selectedTypes;
 
-            let new_data = this.props.defaultData.filter(data_item => data_item[selected_value] == 'Yes')
-            this.props.data.push(new_data)
-            this.props.handleTypeChange(new_data);
+            // update the data
+            let new_data = this.props.data.filter(data_item => data_item[selected_value] == 'Yes');
+            this.props.data.push(new_data);
+
+            // pass to update state
+            this.props.handleTypeChange(new_data, selected_types);
         } else {
             // TODO update removal of unchecked option & this.props.handleTypeChange(new_data);
-            for (var i = 0; i < this.props.selectedTypes.length; i++){
-                if (this.props.selectedTypes[i] == selected_value){
-                    this.props.selectedTypes.splice(i,i);
-                }
-            }
+//            for (var i = 0; i < this.props.selectedTypes.length; i++){
+//                if (this.props.selectedTypes[i] == selected_value){
+//                    this.props.selectedTypes.splice(i,i);
+//                }
+//            }
         }
 
 //    let new_data;

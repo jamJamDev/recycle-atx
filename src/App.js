@@ -40,23 +40,11 @@ class App extends Component {
     this.getRecycleTypes();
   }
 
-  handleTypeChange(passed_data) {
-    // TODO: Future Improvement - update to use checkbox to search for multiple types at once
-    this.setState({data: passed_data})
-    //let new_data;
-//    if(e === 'all') {
-//      new_data = this.state.default_data
-//    } else {
-//      new_data = this.state.default_data.slice();
-//      new_data = new_data.filter(data_item => data_item[e] === 'Yes');
-//    }
-//    // TODO: State not updating for some reason
-//    this.setState({
-//      data: new_data
-//    }, () => {
-//      // TODO do I want to do anything after updating?
-//      // TODO - add a spinner, hide spinner here :thumbsup:
-//    });
+  handleTypeChange(passed_data, selected_types) {
+    this.setState({
+        data: passed_data,
+        selectedTypes: selected_types
+    });
   }
 
   render() {
