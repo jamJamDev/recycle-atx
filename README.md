@@ -9,6 +9,7 @@ Data gathered from [Austin Open Data's Recycle Drop Off Location Dataset](https:
 - Add google maps to each result item. User should be able to launch in native map app if availble.
 - Add a page for general recyling tips
 - Research other data sets available in Austin Open Data that could be useful in the realm of recycling.
+- And, of course, general styling :)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
