@@ -54,6 +54,10 @@ ul.filter-options li label input {
     margin-right: 8px;
 }
 
+ul.filter-options li .option-icon {
+    font-size: .8em;
+}
+
 .result-list {
   list-style: none;
   padding: 0 1em;

@@ -1,6 +1,9 @@
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import CheckboxGroup from 'react-checkbox-group';
+import { faRecycle, faOilCan, faSprayCan, faFilter, faTint, faTruckMonster, faBatteryFull, faNewspaper, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 class Options extends Component {
     handleOptionsChange(e){
@@ -54,8 +57,9 @@ class Options extends Component {
                         {this.props.options.map((option, index) => (
                             <li>
                                 <label>
-                                  <input onChange={e => this.handleOptionsChange(e)} type="checkbox"
-                                        name={option.id} value={option.id} />{option.title}
+
+                                    <input onChange={e => this.handleOptionsChange(e)} type="checkbox"
+                                        name={option.id} value={option.id} />{option.title} ( <FontAwesomeIcon icon={option.iconCode} className="option-icon" /> )
                                 </label>
                             </li>
                         ))}

@@ -77,25 +77,10 @@ class App extends Component {
         <AppHeader />
         <div className="row">
           <div className="col-sm-12">
-            <label for="typeSelect">Select what you need to recycle:</label>
-          </div>   
-          <div className="col-sml-12 select-wrapper">
-            <select id="typeSelect" onChange={e => this.handleTypeChange(e.target.value)} value={this.state.value}>
-              <option value='all'>All</option>
-              {this.state.recycleTypes.map(function (type, i) {
-                    return <option
-                        key={type.id}
-                        value={type.id}>
-                      {type.title}
-                    </option>
-                  }
-              )};
-            </select>
+            <label>Select what you need to recycle:</label>
           </div>
         </div>
-
         <Options options={this.state.recycleTypes} selectedTypes={this.state.selectedTypes} defaultData={this.state.default_data} data={this.state.data} handleTypeChange={this.handleTypeChange.bind(this)}/>
-
         <ul className="result-list">
           {listItems}
         </ul>
