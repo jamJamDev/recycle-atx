@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { faRecycle } from "@fortawesome/free-solid-svg-icons";
+import { faRecycle, faOilCan, faSprayCan, faFilter, faTint, faTruckMonster, faBatteryFull, faNewspaper, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import AppHeader from './components/AppHeader';
@@ -68,6 +68,16 @@ class App extends Component {
                 <ul className="info-list">
                     <li className="address">{item.human_address.address}</li>
                     <li className="city-zip">{item.human_address.city}, {item.human_address.state} - {item.human_address.zip}</li>
+                    <ul className="icons-list">
+                        {(item.oil && (item.oil == 'Yes' || item.oil == 'yes')) ? <li><FontAwesomeIcon icon={faOilCan} className="oil-can" /></li>:<div></div>}
+                        {(item.oil_filter && (item.oil_filter == 'Yes' || item.oil_filter == 'yes')) ? <li><FontAwesomeIcon icon={faFilter} className="oil-filter" /></li>:<div></div>}
+                        {(item.fluids && (item.fluids == 'Yes' || item.fluids == 'yes')) ? <li><FontAwesomeIcon icon={faTint} className="fluids" /></li>:<div></div>}
+                        {(item.tires && (item.tires == 'Yes' || item.tires == 'yes')) ? <li><FontAwesomeIcon icon={faTruckMonster} className="tires" /></li>:<div></div>}
+                        {(item.batteries && (item.batteries == 'Yes' || item.batteries == 'yes')) ? <li><FontAwesomeIcon icon={faBatteryFull} className="batteries" /></li>:<div></div>}
+                        {(item.newspapers && (item.newspapers == 'Yes' || item.newspapers == 'yes')) ? <li><FontAwesomeIcon icon={faNewspaper} className="newspapers" /></li>:<div></div>}
+                        {(item.scrap_metal && (item.scrap_metal == 'Yes' || item.scrap_metal == 'yes')) ? <li><FontAwesomeIcon icon={faWrench} className="scrap-metal" /></li>:<div></div>}
+                        {(item.aluminum && (item.aluminum == 'Yes' || item.aluminum == 'yes')) ? <li><FontAwesomeIcon icon={faSprayCan} className="aluminum" /></li>:<div></div>}
+                    </ul>
                 </ul>
             </li>
         );

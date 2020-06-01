@@ -77,6 +77,15 @@ ul.filter-options li label input {
   padding: 0;
 }
 
+.result-list li ul ul.icons-list {
+  column-count: 6;
+  margin-top: 1em;
+}
+
+.result-list li ul ul.icons-list svg {
+    font-size: 1.2em;
+}
+
 /** Tablet **/
 @media only screen and (max-width: 1024px) {
     ul.filter-options {
