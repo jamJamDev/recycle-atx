@@ -5,7 +5,7 @@ The purpose of this project is to help Austin folks quickly find a recycle cente
 Data gathered from [Austin Open Data's Recycle Drop Off Location Dataset](https://data.austintexas.gov/resource/qzi7-nx8g).
 
 ### Planned work
-- Add "scroll to top" button for scrolling (or make the filter buttons a sticky header).
+- Fix results when filter is removed.
 - Add google maps to each result item. User should be able to launch in native map app if availble.
 - Add a page for general recyling tips
 - Research other data sets available in Austin Open Data that could be useful in the realm of recycling.

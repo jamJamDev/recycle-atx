@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from 'axios';
 import AppHeader from './components/AppHeader';
 import Options from './components/Options';
+import BackToTop from './components/BackToTop';
 import optionsData from './optionsData';
 
 class App extends Component {
@@ -84,6 +85,7 @@ class App extends Component {
         <ul className="result-list">
           {listItems}
         </ul>
+        <BackToTop />
       </div>
     </div>;
   }
